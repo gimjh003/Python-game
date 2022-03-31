@@ -1,12 +1,14 @@
 import pygame
 import random
+import os
 pygame.init()
 screen_width = 480
 screen_height = 640
 screen = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("AVOID YELLOW SQUARE")
-background = pygame.image.load("C:\\Users\\김정협\\Desktop\\Python game\\background.png")
-character = pygame.image.load("C:\\Users\\김정협\\Desktop\\Python game\\character.png")
+current_path = os.path.dirname(__file__)
+background = pygame.image.load(os.path.join(current_path, "background.png"))
+character = pygame.image.load(os.path.join(current_path, "character.png"))
 character_size = character.get_rect().size
 character_width = character_size[0]
 character_height = character_size[1]
@@ -14,7 +16,7 @@ character_speed = 0.6
 character_x_pos = screen_width/2 - character_width/2
 character_y_pos = screen_height - character_height
 to_x = 0
-enemy = pygame.image.load("C:\\Users\\김정협\\Desktop\\Python game\\enemy.png")
+enemy = pygame.image.load(os.path.join(current_path, "enemy.png"))
 enemy_size = enemy.get_rect().size
 enemy_width = enemy_size[0]
 enemy_height = enemy_size[1]
