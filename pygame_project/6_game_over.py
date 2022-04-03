@@ -108,7 +108,7 @@ while running:
         ball_pos_y = ball_val["pos_y"]
         ball_img_idx = ball_val["img_index"] # 공 리스트 안에 있는 딕셔너리 값에서 이미지 인덱스를 가져온다.
 
-        ball_size = ball_images[ball_img_idx].get_rect().size # 공의 이미지 인덱스 인덱스 값을 바탕으로 알맞은 크기의 이미지를 가져온다.
+        ball_size = ball_images[ball_img_idx].get_rect().size # 공의 이미지 인덱스 값을 바탕으로 알맞은 크기의 이미지를 가져온다.
         ball_width = ball_size[0] # 가로세로 크기 업데이트
         ball_height = ball_size[1]
         
@@ -209,9 +209,9 @@ while running:
 # for와 함께 쓰는 else는 break를 만나지 않고 성공적으로 수행되었을 때 안의 명령을 수행하게 됨
 # for문이 중간에 break되었는지 안되었는지를 판별하기 위해 사용
 
-    if ball_to_remove > -1: # -1이 될리는 없으니 일반적인 경우 이 if문이 실행됨
-        del balls[ball_to_remove] # 사라져야 되는 공의 인덱스 정보를 가지고 공(딕셔너리 값들)을 지움
-        ball_to_remove = -1 # 다시 공이 사라질 때를 기다리기 위해 -1로 변경
+    if ball_to_remove > -1: # 일반적인 경우 이 if문이 실행됨 (이미지 인덱스 값은 일반적으로 양수)
+        del balls[ball_to_remove] # 사라져야 되는 공의 인덱스 정보를 가지고 공(딕셔너리 값들)을 지움 (del은 인덱스로 지울 수 있음)
+        ball_to_remove = -1 # 다시 공이 사라질 때를 기다리기 위해 -1로 변경 (아니라면 가장 큰 공을 지웠을 때 0번째로 설정될 모든 공들이 제거될 수 있음)
 
     if weapon_to_remove > -1: # 무기 또한 마찬가지로 공과 닿으면 서로 사라져야 함.
         del weapons[weapon_to_remove] # 무기의 좌표값이 지워짐
